@@ -56,8 +56,7 @@ SELECT
 FROM
     cd.facilities 
 WHERE 
-		membercost > 0 and 
-		(membercost < monthlymaintenance/50.0);   
+		membercost > 0 and (membercost < monthlymaintenance/50.0);   
 ```
 The WHERE clause allows us to filter for the rows we're interested in - in this case, those with a membercost of more than zero, and less than 1/50th of the monthly maintenance cost. As you can see, the massage rooms are very expensive to run thanks to staffing costs!
 
@@ -102,7 +101,7 @@ FROM
     cd.facilities
 WHERE
     facid in (
-			SELECT
+	    SELECT
                 facid
             FROM
                 cd.facilities
@@ -204,10 +203,12 @@ FROM
     cd.members
 WHERE
     joindate = 
-		(SELECT
+		(
+	SELECT
             max(joindate) 
-			FROM
-                cd.members);     
+	FROM
+	    cd.members
+			);     
 ```
 
 In the suggested approach above, you use a subquery to find out what the most recent joindate is. This subquery returns a scalar table - that is, a table with a single column and a single row. Since we have just a single value, we can substitute the subquery anywhere we might put a single constant value. In this case, we use it to complete the WHERE clause of a query to find a given member.
@@ -225,8 +226,11 @@ Unfortunately, this doesn't work. The MAX function doesn't restrict rows like th
 As mentioned by the hint, there's other ways to get this job done - one example is below. In this approach, rather than explicitly finding out what the last joined date is, we simply order our members table in descending order of join date, and pick off the first one. Note that this approach does not cover the extremely unlikely eventuality of two people joining at the exact same time :-).
 
 ``` sql
-select firstname, surname, joindate
-	from cd.members
-order by joindate desc
-limit 1;
+SELECT
+   firstname, surname, joindate
+FROM
+   cd.members
+ORDER BY
+   joindate desc
+LIMIT 1;
 ```
