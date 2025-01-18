@@ -1,4 +1,4 @@
-# PostgreSQL-Exercises
+# Simple SQL Queries
 
 Schema Reminder 
 ![Screenshot 2025-01-14 201556](https://github.com/user-attachments/assets/5297ed44-38da-4824-8cb3-27da6012e0cb)
