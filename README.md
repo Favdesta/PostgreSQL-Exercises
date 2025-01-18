@@ -12,7 +12,7 @@ A comprehensive collection of SQL exercises progressing from basics to advanced 
 6. [String Operations](#string-operations)
 7. [Recursive Queries](#recursive-queries)
 
-## Simple SQL Queries
+## 1. Simple SQL Queries
 
 Start your SQL journey with fundamental concepts. Learn SELECT statements, WHERE clauses, CASE expressions, and basic operations.
 
@@ -28,7 +28,7 @@ Start your SQL journey with fundamental concepts. Learn SELECT statements, WHERE
 - Combining results from multiple queries
 - Basic and advanced aggregation
 
-## Joins and Subqueries
+## 2. Joins and Subqueries
 
 Master the essential concept of joining tables and writing subqueries to handle complex data relationships.
 
@@ -40,7 +40,7 @@ Master the essential concept of joining tables and writing subqueries to handle 
 - Handle costly bookings
 - Write efficient subqueries
 
-## Modifying Data
+## 3. Modifying Data
 
 Learn Data Manipulation Language (DML) operations for managing database content.
 
@@ -52,7 +52,7 @@ Learn Data Manipulation Language (DML) operations for managing database content.
 - Delete operations with conditions
 - Subquery-based deletions
 
-## Aggregation
+## 4. Aggregation
 
 Unlock the power of database analytics with comprehensive aggregation techniques.
 
@@ -65,7 +65,7 @@ Unlock the power of database analytics with comprehensive aggregation techniques
 - Rolling averages
 - Value classification
 
-## Working with Timestamps
+## 5. Working with Timestamps
 
 Master date and time operations in PostgreSQL.
 
@@ -77,7 +77,7 @@ Master date and time operations in PostgreSQL.
 - Utilization tracking
 - Monthly statistics
 
-## String Operations
+## 6. String Operations
 
 Learn advanced string manipulation techniques in PostgreSQL.
 
@@ -89,7 +89,7 @@ Learn advanced string manipulation techniques in PostgreSQL.
 - Prefix searching
 - Character counting
 
-## Recursive Queries
+## 7. Recursive Queries
 
 Explore advanced recursive Common Table Expressions (CTEs).
 
