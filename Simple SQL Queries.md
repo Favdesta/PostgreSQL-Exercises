@@ -3,6 +3,8 @@
 Schema Reminder 
 ![Screenshot 2025-01-14 201556](https://github.com/user-attachments/assets/5297ed44-38da-4824-8cb3-27da6012e0cb)
 
+You can find the code here: [queries.sql](queries.sql) file
+
 # Retrieve everything from a table
 Q: How can you retrieve all the information from the cd.facilities table?
 ``` sql
