@@ -4,7 +4,7 @@ A comprehensive collection of SQL exercises progressing from basics to advanced 
 
 ## Table of Contents
 
-1. [Simple SQL Queries.md](Simple-SQL-Queries.md)
+1. [Simple_SQL_Queries.md](Simple-SQL-Queries.md)
 2. [Joins and Subqueries](#joins-and-subqueries)
 3. [Modifying Data](#modifying-data)
 4. [Aggregation](#aggregation)
