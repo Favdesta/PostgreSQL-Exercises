@@ -13,13 +13,13 @@ SELECT
 FROM
     cd.facilities; 
 ```
-The SELECT statement is the basic starting block for queries that read information out of the database. A minimal select statement is generally comprised of select [some set of columns] from [some table or group of tables].
+The SELECT statement forms the foundation for retrieving data from databases. At its most basic, you build a query by specifying which columns you want (after the SELECT keyword) and which table(s) to get them from (after FROM).
 
-In this case, we want all of the information from the facilities table. The from section is easy - we just need to specify the cd.facilities table. 'cd' is the table's schema - a term used for a logical grouping of related information in the database.
+In our example, we're pulling data from the facilities table in the cd schema. A schema helps organize related database objects together - think of it like a folder system.
 
-Next, we need to specify that we want all the columns. Conveniently, there's a shorthand for 'all columns' - *. We can use this instead of laboriously specifying all the column names.
+To get every column from the table, we can use the * wildcard symbol instead of typing out each column name individually. This * is a handy shortcut that tells the database "give me everything."
 
-#Retrieve specific columns from a table
+# Retrieve specific columns from a table
 Q: You want to print out a list of all of the facilities and their cost to members. How would you retrieve a list of only facility names and costs?
 
 ``` sql
@@ -28,11 +28,11 @@ SELECT
 FROM
     cd.facilities;  
 ```
-For this question, we need to specify the columns that we want. We can do that with a simple comma-delimited list of column names specified to the select statement. All the database does is look at the columns available in the FROM clause, and return the ones we asked for, as illustrated below
+For this question, when you want specific information rather than everything in a table, you can list out exactly which columns you want after the SELECT keyword, separating each column name with a comma. The database then checks what columns are available in the table(s) mentioned in your FROM clause and returns just the ones you asked for, as illustrated below
 
 ![Screenshot 2025-01-14 223449](https://github.com/user-attachments/assets/2c0fbe10-a99f-452a-b934-e2392c385d6d)
 
-Generally speaking, for non-throwaway queries it's considered desirable to specify the names of the columns you want in your queries rather than using *. This is because your application might not be able to cope if more columns get added into the table.
+While using * is convenient, it's usually better practice to explicitly name your columns when writing queries you'll keep and reuse. This makes your queries more reliable - if someone adds new columns to the table later, your query will still return exactly what you expected rather than suddenly including extra columns that might cause problems in your application.
 
 # Control which rows are retrieved 
 Q: How can you produce a list of facilities that charge a fee to members?
@@ -43,9 +43,11 @@ FROM
 WHERE
     membercost > 0;
 ```
-The FROM clause is used to build up a set of candidate rows to read results from. In our examples so far, this set of rows has simply been the contents of a table. In future we will explore joining, which allows us to create much more interesting candidates.
+The FROM clause sets up your initial dataset - it defines which rows you'll be working with. So far, we've just pulled rows directly from single tables, but later we'll see how to combine data from multiple tables using joins to create more complex datasets.
 
-Once we've built up our set of candidate rows, the WHERE clause allows us to filter for the rows we're interested in - in this case, those with a membercost of more than zero. As you will see in later exercises, WHERE clauses can have multiple components combined with boolean logic - it's possible to, for instance, search for facilities with a cost greater than 0 and less than 10. The filtering action of the WHERE clause on the facilities table is illustrated below:
+After you have your base set of rows, you can use the WHERE clause as a filter to narrow down to just the rows you care about. In this example, we're filtering to only show rows where membercost is greater than zero. WHERE clauses can get quite sophisticated - you can combine multiple conditions using AND, OR, and other logical operators to create precise filters. For instance, you could find all facilities with costs between 0 and 10.
+
+Think of it like this: FROM creates your starting pool of data, then WHERE acts like a sieve to keep only the rows that match your conditions, illustration below:
 
 ![Screenshot 2025-01-14 223718](https://github.com/user-attachments/assets/f3f47ab0-c6cb-454f-8a75-5cd339986723)
 
@@ -60,11 +62,11 @@ FROM
 WHERE 
 		membercost > 0 and (membercost < monthlymaintenance/50.0);   
 ```
-The WHERE clause allows us to filter for the rows we're interested in - in this case, those with a membercost of more than zero, and less than 1/50th of the monthly maintenance cost. As you can see, the massage rooms are very expensive to run thanks to staffing costs!
+The WHERE clause lets you filter your data based on specific conditions - here, we're looking for records where the membercost exceeds zero but is less than 2% (1/50th) of the monthly maintenance cost. This highlights how expensive the massage rooms are to maintain, mainly due to staff costs!
 
-When we want to test for two or more conditions, we use AND to combine them. We can, as you might expect, use OR to test whether either of a pair of conditions is true.
+When you need multiple conditions in your filter, you can connect them with AND to require that both conditions must be true. Alternatively, using OR means at least one of the conditions must be true.
 
-You might have noticed that this is our first query that combines a WHERE clause with selecting specific columns. You can see in the image below the effect of this: the intersection of the selected columns and the selected rows gives us the data to return. This may not seem too interesting now, but as we add in more complex operations like joins later, you'll see the simple elegance of this behaviour.
+This query shows how WHERE and column selection work together: first, you pick your columns (SELECT), then filter the rows (WHERE). The final result is like a grid showing only the intersection of your chosen columns and the rows that passed your filter conditions. While this might seem straightforward now, this clean approach becomes particularly elegant when we start working with more complex operations like joins.
 
 ![Screenshot 2025-01-14 223916](https://github.com/user-attachments/assets/320c7c4e-bcc3-44a3-a611-a1b5f97a0e1e)
 
